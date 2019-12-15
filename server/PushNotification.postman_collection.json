@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "0e7ffac7-dce3-4256-990d-a478ee751968",
+		"name": "PushNotification",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FCM Api",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key=<Your server legacy key here>",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"registration_ids\": [],\n    \"collapse_key\": \"type_a\",\n    \"android_channel_id\": \"default\",\n    \"data\": {\n        \"sender_uid\": \"100\",\n        \"sender_name\": \"Saagar\",\n        \"message\": \"This is test message to default channel\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fcm.googleapis.com/fcm/send",
+					"protocol": "https",
+					"host": [
+						"fcm",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"fcm",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ServerApi",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"registration_ids\": [],\n    \"android_channel_id\": \"default\",\n    \"sender_uid\": \"100\",\n    \"sender_name\": \"Saagar\",\n    \"message\": \"This is test message to default channel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/send_push",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"send_push"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
